@@ -54,6 +54,8 @@ while True:
         day   = int (input("        Day : "))
         month   = int (input("        Month : "))
         year   = int (input("        Year : "))
+
+
         
 
         t = localtime()
@@ -62,12 +64,15 @@ while True:
         aMon = t.tm_mon
         aYear = t.tm_year
         
-        actualDayAge = aDay - day
-        actualMonAge = aMon - month
-        actualYearAge = aYear - year
+        if day <= 31 and day >= 1 and month <= 12 and month >= 1 :
 
-        print(f"\n        Your actual age is: {actualYearAge} yeards with {actualMonAge} month with {actualDayAge} days")
-
+            actualDayAge = aDay - day
+            actualMonAge = aMon - month
+            actualYearAge = aYear - year
+            print(f"\n        Your actual age is: {actualYearAge} years with {actualMonAge} month with {actualDayAge} days")
+        
+        else : 
+            print("\n        Data time error, put again the correct data")
 
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
