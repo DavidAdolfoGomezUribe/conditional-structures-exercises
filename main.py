@@ -1,25 +1,13 @@
-#Escriba un programa que reciba como entrada dos números, y los muestre ordenados de menor a mayor:
+#Escriba un programa que determine si un caracter ingresado es letra, número, o ninguno de los dos. En caso que sea letra, determine si es mayúscula o minúscula.
 #
-#Ingrese numero: 51
-#Ingrese numero: 24
-#24 51
-#A continuación, escriba otro programa que haga lo mismo con tres números:
-#
-#Ingrese numero: 8
-#Ingrese numero: 1
-#Ingrese numero: 4
-#1 4 8
-#Finalmente, escriba un tercer programa que ordene cuatro números:
-#
-#Ingrese numero: 7
-#Ingrese numero: 0
-#Ingrese numero: 6
-#Ingrese numero: 1
-#0 1 6 7
-#Recuerde que su programa debe entregar la solución correcta para cualquier combinación de números,
-#no sólo para los ejemplos mostrados aquí.
-#
-#Hay más de una manera de resolver cada ejercicio.
+#Ingrese caracter: 9
+#Es numero.
+#Ingrese caracter: A
+#Es letra mayúscula.
+#Ingrese caracter: f
+#Es letra minúscula.
+#Ingrese caracter: #
+#No es letra ni número.
 
 import math
 
@@ -37,47 +25,29 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate order of a certain amount of numbers \n
+        Welcome back Mr/Ms {name}, this is a program for calculate if the data provided its a number or a letter
               """) 
 
     try :    
         
-        
-        select = int(input("        Select the amount of numbers that you want to order (2 , 3 or 4 numbers) : "))
-        if select == 2 :
-            numberOne  =  float(input("        Enter your first number : "))
-            numberTwo  =  float(input("        Enter your second number : "))
+        variable = input("        Please enter one character : ")
+
+        if len(variable ) != 1:
+              print("        Please enter one character")
+        else:      
+            if variable.isalpha():
+                if variable.isupper(): 
+                    print(f"\n        {variable} is a uppercase letter")
+                
+                else:
+                    print(f"\n        {variable} is a lowcase letter")
             
-            array = [numberOne , numberTwo]
-            array.sort()
-            print("        The order of the numbers is : ",", " .join(map(str,array))) #para eliminar los corchetes de un array y separar los elementos del array con comas, ademas trasnforma los elemntos de array en un str
+            elif variable.isdigit():
+                print(f"\n        {variable} it is number")
 
+            else:   
+                print(f"\n        {variable}it is not a character or a number")
 
-    
-        if select == 3 :
-            numberOne  =  float(input("        Enter your first number : "))
-            numberTwo  =  float(input("        Enter your second number : "))
-            numberThree = float(input("        Enter your thirdth : "))
-            
-            array = [numberOne , numberTwo, numberThree]
-            array.sort()
-            print("        The order of the numbers is : ",", " .join(map(str,array)))
-        
-        if select == 4 :
-            numberOne  =  float(input("        Enter your first number : "))
-            numberTwo  =  float(input("        Enter your second number : "))
-            numberThree = float(input("        Enter your thirdth : "))
-            numberFour = float(input("        Enter your fourth : "))
-
-            array = [numberOne , numberTwo, numberThree , numberFour]
-            array.sort()
-            print("        The order of the numbers is : ",", " .join(map(str,array)))
-
-        if select != 2 and select != 3 and select != 4 :    
-            print("\n        Error: Please enter the correct data ")    
-        
-        
-        
         
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
