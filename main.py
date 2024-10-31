@@ -1,13 +1,32 @@
-#Escriba un programa que determine si un caracter ingresado es letra, número, o ninguno de los dos. En caso que sea letra, determine si es mayúscula o minúscula.
+#Escriba un programa que simule una calculadora básica, este puede realizar 
+# peración de suma, resta, multiplicación y división.
 #
-#Ingrese caracter: 9
-#Es numero.
-#Ingrese caracter: A
-#Es letra mayúscula.
-#Ingrese caracter: f
-#Es letra minúscula.
-#Ingrese caracter: #
-#No es letra ni número.
+#El programa debe recibir como entrada 2 números reales y un operador,
+#  que puede ser +, -, * o /.
+#
+#La salida del programa debe ser el resultado de la operación.
+#
+#Operando: 3
+#Operador: +
+#Operando: 2
+#3 + 2 = 5
+#Operando: 6
+#Operador: -
+#Operando: 7
+#6 - 7 = -1
+#Operando: 4
+#Operador: *
+#Operando: 5
+#4 * 5 = 20
+#Operando: 10
+#Operador: /
+#Operando: 4
+#10 / 4 = 2.5
+#Operando: -1
+#Operador: **
+#Operando: 4
+#-1 ** 4 = 1
+
 
 import math
 
@@ -25,30 +44,43 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate if the data provided its a number or a letter
+        Welcome back Mr/Ms {name}, this is a program for calculate sums, substracctions, multiplication and divition
               """) 
 
     try :    
         
-        variable = input("        Please enter one character : ")
+        firstNumber  = float(input("        Please enter the first number: " ))
+        secondNumber = float(input("        Please enter the second number: " ))
+        operator = (input("        Please enter the operator: [+,-,*,/] : " ))
 
-        if len(variable ) != 1:
-              print("        Please enter one character")
-        else:      
-            if variable.isalpha():
-                if variable.isupper(): 
-                    print(f"\n        {variable} is a uppercase letter")
-                
-                else:
-                    print(f"\n        {variable} is a lowcase letter")
+      
+      
             
-            elif variable.isdigit():
-                print(f"\n        {variable} it is number")
+        if operator == "+" :
+            total = firstNumber + secondNumber
+            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
 
-            else:   
-                print(f"\n        {variable}it is not a character or a number")
+        elif operator == "-" :
+            total = firstNumber - secondNumber
+            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
 
-        
+        elif operator == "*" :
+            total = firstNumber * secondNumber
+            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
+
+        elif operator == "/" :
+            if secondNumber == 0:
+                print ("\n        Division by zero cant be possible")
+                
+            
+            else :
+                total = firstNumber / secondNumber
+                print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
+                
+        else :
+            print("\n        Enter a valid operator")
+
+
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
         if continueAsk != "yes" :
