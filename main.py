@@ -1,18 +1,16 @@
-#Escriba un programa que pida dos números enteros y que calcule la división, 
-#indicando si la división es exacta o no.
+#Palabra más larga
+#Escriba un programa que pida al usuario dos palabras, 
+#y que indique cuál de ellas es la más larga y por cuántas letras lo es.
 #
-#Dividendo: 14
-#Divisor: 5
-#
-#La división no es exacta.
-#Cociente: 2
-#Resto: 4
-#Dividendo: 100
-#Divisor: 10
-#
-#La división es exacta.
-#Cociente: 10
-#Resto: 0
+#Palabra 1: edificio
+#Palabra 2: tren
+#La palabra edificio tiene 4 letras mas que tren.
+#Palabra 1: sol
+#Palabra 2: paralelepipedo
+#La palabra paralelepipedo tiene 11 letras mas que sol
+#Palabra 1: plancha
+#Palabra 2: lapices
+#Las dos palabras tienen el mismo largo
 
 import math
 
@@ -30,33 +28,28 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate the divison of two numbers and kwon 
-        if they have a remainder and a quotient\n
+        Welcome back Mr/Ms {name}, this is a program for calculate the length of 2 words and how to kwon
+        which one have more letters \n
               """) 
 
     try :    
         
-        numberOne = float(input("        Please enter the first number: "))
-        numberTwo = float(input("        Please enter the second number: " ))
+        wordOne = str(input("        Please enter the first word: "))
+        wordTwo = str(input("        Please enter the second second: " ))
 
+        nWordOne = len(wordOne)
+        nWordTwo = len(wordTwo)
         
+        if nWordOne > nWordTwo :
+            words = nWordOne - nWordTwo
+            print(f"        The word {wordOne} have {words} more letters than the word {wordTwo}")
         
-        if numberTwo == 0:
-            print("        Division by zero ´0´ its not posible  ")
+        if nWordOne < nWordTwo :
+            words =  nWordTwo - nWordOne 
+            print(f"        The word {wordTwo} have {words} more letters than the word {wordOne}")
 
-        quotient = numberOne // numberTwo  #cociente pero solo cn la parte entera
-        remainder = numberOne % numberTwo  #resto
-         
-        if remainder != 0 :
-           
-            print("\n        The division is not exact")
-            print(f"        Quotient: {round(quotient)}")
-            print(f"        Remainder: {round(remainder)}")
-
-        if remainder == 0:    
-            print("\n        The division is exact")
-            print(f"        Quotient: {round(quotient)}")
-            print(f"        Remainder: {round(remainder)}")
+        if nWordOne == nWordTwo :
+            print(f"        Both words have se same length")
 
 
 
