@@ -29,6 +29,7 @@
 
 
 import math
+from time import localtime
 
 
 print(f""" 
@@ -44,41 +45,28 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate sums, substracctions, multiplication and divition
+        Welcome back Mr/Ms {name}, this is a program for calculate your age:
               """) 
 
     try :    
         
-        firstNumber  = float(input("        Please enter the first number: " ))
-        secondNumber = float(input("        Please enter the second number: " ))
-        operator = (input("        Please enter the operator: [+,-,*,/] : " ))
+        print("        Enter your Enter your birth date ")
+        day   = int (input("        Day : "))
+        month   = int (input("        Month : "))
+        year   = int (input("        Year : "))
+        
 
-      
-      
-            
-        if operator == "+" :
-            total = firstNumber + secondNumber
-            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
+        t = localtime()
+        
+        aDay = t.tm_mday 
+        aMon = t.tm_mon
+        aYear = t.tm_year
+        
+        actualDayAge = aDay - day
+        actualMonAge = aMon - month
+        actualYearAge = aYear - year
 
-        elif operator == "-" :
-            total = firstNumber - secondNumber
-            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
-
-        elif operator == "*" :
-            total = firstNumber * secondNumber
-            print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
-
-        elif operator == "/" :
-            if secondNumber == 0:
-                print ("\n        Division by zero cant be possible")
-                
-            
-            else :
-                total = firstNumber / secondNumber
-                print(f"\n        The result of the operation is : {firstNumber} {operator} {secondNumber} = {total}")  
-                
-        else :
-            print("\n        Enter a valid operator")
+        print(f"\n        Your actual age is: {actualYearAge} yeards with {actualMonAge} month with {actualDayAge} days")
 
 
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
