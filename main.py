@@ -54,44 +54,48 @@ while True:
 
     try :    
                 
-        a = int(input("        jugdor a"))
-        b = int(input("        jugador b"))
+        a = int(input("        Player A : "))
+        b = int(input("        Player B : "))
 
-        if (a and b).isdigit() <= 7 or (a and b).isdigit() >= 1 :
+        if a <= 0 or b <= 0:
+            raise ValueError("")
+
+
+        if (a and b) <= 7 or (a and b) >= 1 :
 
             if a == 6 and (a-b) == 2:
-                print("gana a")
+                print("\n        A wins")
             if b == 6 and (b-a) == 2:
-                print("gana b")
+                print("\n        B wins")
             if a == 7 and b < 5 :
-                print("invalido")
+                print("\n        Invalid")
             if b == 7 and a < 5 :
-                print("invalido")
+                print("\n        Invalid")
 
             
             if a == 7 and (a - b) == 1:
-                print ("gana a")
+                print ("\n        A wins")
             if b == 7 and (b - a) == 1 :
-                print ("gana b")
+                print ("\n        B wins")
 
             if a == 7 and (a - b) == 2:
-                print ("gana a")
+                print ("\n        A wins")
             if b == 7 and (b - a) == 2 :
-                print ("gana b")
+                print ("\n        B wins")
 
 
 
             if a == b :
                 print("invalido")
             if (a < 6 and b < 6) :
-                print("no ha terminado")
+                print("\n        The game its not finished")
             if a == 6 and (a - b) == 1:
-                print("no ha terminado")
+                print("\n        The game its not finished")
             if b == 6 and (b - a) == 1:
-                print("no ha terminado")
+                print("\n        The game its not finished")
 
         else:
-            print ("Invalido")
+            print ("Invalid")
 
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
