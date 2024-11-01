@@ -1,39 +1,24 @@
-#El joven periodista Solarrabietas debe relatar un partido de tenis, pero no conoce las
-#reglas del deporte. En particular, no ha logrado aprender cómo saber si un set ya terminó, 
-#y quién lo ganó.
+#Los tres lados a, b y c de un triángulo deben satisfacer la desigualdad triangular: cada uno de los lados no puede ser más largo que la suma de los otros dos.
 #
-#Un partido de tenis se divide en sets. Para ganar un set, un jugador debe ganar 6 juegos, pero además
-#  debe haber ganado por lo menos dos juegos más que su rival. Si el set está empatado a 5 juegos, 
-# el ganador es el primero que llegue a 7. Si 
-# el set está empatado a 6 juegos, el set se define en un último juego, en cuyo caso el resultado final
-# es 7-6.
+#Escriba un programa que reciba como entrada los tres lados de un triángulo, e indique:
 #
-#Sabiendo que el jugador A ha ganado m juegos, y el jugador B, n juegos, al periodista le gustaría saber:
-#
-#si A ganó el set, o
-#si B ganó el set, o
-#si el set todavía no termina, o
-#si el resultado es inválido (por ejemplo, 8-6 o 7-3).
-#Desarrolle un programa que solucione el problema de Solarrabietas:
-#
-#Juegos ganados por A: 4
-#Juegos ganados por B: 5
-#Aun no termina
-#Juegos ganados por A: 5
-#Juegos ganados por B: 7
-#Gano B
-#Juegos ganados por A: 5
-#Juegos ganados por B: 6
-#Aun no termina
-#Juegos ganados por A: 3
-#Juegos ganados por B: 7
-#Invalido
-#Juegos ganados por A: 6
-#Juegos ganados por B: 4
-#Gano A
+#si acaso el triángulo es inválido; y
+#si no lo es, qué tipo de triángulo es.
+#Ingrese a: 3.9
+#Ingrese b: 6.0
+#Ingrese c: 1.2
+#No es un triangulo valido.
+#Ingrese a: 1.9
+#Ingrese b: 2
+#Ingrese c: 2
+#El triangulo es isoceles.
+#Ingrese a: 3.0
+#Ingrese b: 5.0
+#Ingrese c: 4.0
+#El triangulo es escaleno.
 
 import math
-from time import localtime
+
 
 
 print(f""" 
@@ -49,53 +34,26 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate the tennis match points of two players:
+        Welcome back Mr/Ms {name}, this is a program for calculate the triangle type based in his sides.
               """) 
 
     try :    
                 
-        a = int(input("        Player A : "))
-        b = int(input("        Player B : "))
+        aSide = float(input("        Side A : "))
+        bSide = float(input("        Side B : "))
+        cSide = float(input("        Side C : "))
 
-        if a <= 0 or b <= 0:
-            raise ValueError("")
+        if not (aSide + bSide > cSide and aSide + cSide > bSide and bSide + cSide > aSide):
+            raise ValueError("") #posiblemente lo use mas tarde
+         
+        if aSide == bSide and bSide == cSide :
+            print("        The triangle is equilateral")
 
-
-        if (a and b) <= 7 or (a and b) >= 1 :
-
-            if a == 6 and (a-b) == 2:
-                print("\n        A wins")
-            if b == 6 and (b-a) == 2:
-                print("\n        B wins")
-            if a == 7 and b < 5 :
-                print("\n        Invalid")
-            if b == 7 and a < 5 :
-                print("\n        Invalid")
-
-            
-            if a == 7 and (a - b) == 1:
-                print ("\n        A wins")
-            if b == 7 and (b - a) == 1 :
-                print ("\n        B wins")
-
-            if a == 7 and (a - b) == 2:
-                print ("\n        A wins")
-            if b == 7 and (b - a) == 2 :
-                print ("\n        B wins")
-
-
-
-            if a == b :
-                print("invalido")
-            if (a < 6 and b < 6) :
-                print("\n        The game its not finished")
-            if a == 6 and (a - b) == 1:
-                print("\n        The game its not finished")
-            if b == 6 and (b - a) == 1:
-                print("\n        The game its not finished")
-
+        if aSide == bSide  or aSide == cSide or cSide == bSide :
+            print("        The triangle is isosceles")    
+        
         else:
-            print ("Invalid")
+            print("        The triangle is scalene")    
 
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
@@ -103,7 +61,7 @@ while True:
                 print("    Thaks for using the program. Goodbye! \n ")
                 break
     except :            
-        print("\n        Error: Please enter the correct data ")
+        print("\n        Error: Its not a valid triangle ")
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
         if continueAsk != "yes" :
