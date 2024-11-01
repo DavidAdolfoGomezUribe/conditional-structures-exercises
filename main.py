@@ -1,21 +1,12 @@
-#Los tres lados a, b y c de un triángulo deben satisfacer la desigualdad triangular: cada uno de los lados no puede ser más largo que la suma de los otros dos.
+#El riesgo de que una persona sufra enfermedades coronarias depende de su edad y su índice de masa corporal:
 #
-#Escriba un programa que reciba como entrada los tres lados de un triángulo, e indique:
+# 	edad < 45	edad ≥ 45
+#IMC < 22.0	bajo	medio
+#IMC ≥ 22.0	medio	alto
+#El índice de masa corporal es el cuociente entre el peso del individuo en kilos 
+# y el cuadrado de su estatura en metros.
 #
-#si acaso el triángulo es inválido; y
-#si no lo es, qué tipo de triángulo es.
-#Ingrese a: 3.9
-#Ingrese b: 6.0
-#Ingrese c: 1.2
-#No es un triangulo valido.
-#Ingrese a: 1.9
-#Ingrese b: 2
-#Ingrese c: 2
-#El triangulo es isoceles.
-#Ingrese a: 3.0
-#Ingrese b: 5.0
-#Ingrese c: 4.0
-#El triangulo es escaleno.
+#Escriba un programa que reciba como entrada la estatura, el peso y la edad de una persona, y le entregue su condición de riesgo.
 
 import math
 
@@ -34,34 +25,49 @@ name = input("    Hello, please enter your full name:  ")
 while True:
 
     print(f""" \n
-        Welcome back Mr/Ms {name}, this is a program for calculate the triangle type based in his sides.
+        Welcome back Mr/Ms {name}, this is a program for calculate the IMC risk.
               """) 
 
     try :    
-                
-        aSide = float(input("        Side A : "))
-        bSide = float(input("        Side B : "))
-        cSide = float(input("        Side C : "))
 
-        if not (aSide + bSide > cSide and aSide + cSide > bSide and bSide + cSide > aSide):
-            raise ValueError("") #posiblemente lo use mas tarde
-         
-        if aSide == bSide and bSide == cSide :
-            print("        The triangle is equilateral")
 
-        if aSide == bSide  or aSide == cSide or cSide == bSide :
-            print("        The triangle is isosceles")    
+        age = float(input("        Enter your age: "))         
+        height = float(input("        Height (in Meters): "))
+        mass = float(input("        Mass (in Kg) : "))
         
-        else:
-            print("        The triangle is scalene")    
+        tIMC =  mass / math.pow(height,2)
 
+        if age >= 1 and height >= 1 and mass >= 1 :
+            if age < 45:
+                if tIMC < 22:
+                    print(f"        For your IMC {round(tIMC,2)} you have Low risk chance")
+                else:
+                    print(f"        For your IMC {round(tIMC,2)} you have Medium risk chance")
+            
+            else:
+                if tIMC < 22:
+                    print(f"        For your IMC {round(tIMC,2)} you have Medium risk chance")
+                else:
+                    print(f"        For your IMC {round(tIMC,2)} you have High risk chance")
+            
+
+
+
+        else:
+            print("\n        Only positive numbers")
+        
+      #  if not (aSide + bSide > cSide and aSide + cSide > bSide and bSide + cSide > aSide):
+       #     raise ValueError("") #posiblemente lo use mas tarde
+       
+         
+        
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
         if continueAsk != "yes" :
                 print("    Thaks for using the program. Goodbye! \n ")
                 break
     except :            
-        print("\n        Error: Its not a valid triangle ")
+        print("\n        Error: Enter the correct data ")
         continueAsk = input( "\n    Do you want to calculate again? (yes/no): " ).strip().lower()
 
         if continueAsk != "yes" :
